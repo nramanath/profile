@@ -12,4 +12,4 @@ I have experience with the following technologies:
 - **Backend**: Node.js, Express, Django
 - **DevOps**: Docker, Kubernetes, AWS, GitHub Actions
 
-*(More details to be added)*
+_(More details to be added)_
