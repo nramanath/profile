@@ -4,11 +4,63 @@
 .social-icons a svg {
     width: 1.5rem !important;
     height: 1.5rem !important;
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+.social-icons a:hover svg {
+    transform: scale(1.2);
+    color: var(--sl-color-accent);
 }
 
 .hero {
     padding-top: 4rem;
     padding-bottom: 4rem;
+}
+
+/* Hero Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero .tagline {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+.hero .actions {
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+/* Button Animations */
+.sl-link-button {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease !important;
+}
+
+.sl-link-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sl-link-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Profile Image Styling */
@@ -21,6 +73,12 @@
     display: block;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border: 4px solid var(--sl-color-accent);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 /* Hide site title on Home Page (pages with Hero) */
