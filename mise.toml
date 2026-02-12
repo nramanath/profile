@@ -1,0 +1,34 @@
+[tools]
+bun = "latest"
+
+[tasks.setup]
+description = "Install dependencies"
+run = "bun install"
+
+[tasks.dev]
+description = "Start the development server"
+run = "bun run dev"
+
+[tasks.build]
+description = "Build the project for production"
+run = "bun run build"
+
+[tasks.preview]
+description = "Preview the production build"
+run = "bun run preview"
+
+[tasks.lint]
+description = "Lint the codebase"
+run = "bun run lint"
+
+[tasks.format]
+description = "Format the codebase"
+run = "bun run format"
+
+[tasks.check-format]
+description = "Check if the codebase is formatted"
+run = "bun run format:check"
+
+[tasks.pr]
+description = "Run CI checks (format, lint, build) locally before creating a PR"
+depends = ["check-format", "lint", "build"]

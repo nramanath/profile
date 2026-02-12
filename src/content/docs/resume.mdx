@@ -1,0 +1,37 @@
+---
+title: Resume
+description: View and download Ramanathan Nachiappan's resume
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+<div class="resume-container">
+    <div class="resume-actions">
+        <LinkButton 
+            href="/profile/resume-ramanathan-nachiappan.pdf" 
+            variant="primary"
+            icon="document"
+            download="resume-ramanathan-nachiappan.pdf"
+        >
+            Download PDF
+        </LinkButton>
+        <LinkButton 
+            href="/profile/resume-ramanathan-nachiappan.pdf" 
+            variant="secondary"
+            icon="external"
+            target="_blank"
+        >
+            View in Browser
+        </LinkButton>
+    </div>
+
+    <div class="pdf-embed-wrapper">
+        <embed
+            src="/profile/resume-ramanathan-nachiappan.pdf"
+            type="application/pdf"
+            width="100%"
+            height="800px"
+        />
+    </div>
+
+</div>

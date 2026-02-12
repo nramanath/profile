@@ -1,0 +1,20 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import StarlightHead from '@astrojs/starlight/components/Head.astro';
+---
+
+<StarlightHead {...Astro.props}><slot /></StarlightHead>
+<style>
+    :global(.sl-nav-link[href*='resume.pdf']) {
+        background: var(--sl-color-accent);
+        color: var(--sl-color-white);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+    :global(.sl-nav-link[href*='resume.pdf']:hover) {
+        background: var(--sl-color-accent-high);
+        transform: translateY(-1px);
+    }
+</style>
