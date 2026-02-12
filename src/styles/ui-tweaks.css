@@ -4,14 +4,51 @@
 .social-icons a svg {
     width: 1.5rem !important;
     height: 1.5rem !important;
+    /* color: var(--sl-color-text-invert);  Removed to use default previous color */
     transition:
         transform 0.2s ease,
         color 0.2s ease;
+    z-index: 2;
+    position: relative;
+    display: block;
+}
+
+.social-icons a {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+/* Social Icon Reveal Effect */
+.social-icons a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--sl-color-accent); /* Blue background reveal */
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .social-icons a:hover svg {
-    transform: scale(1.2);
-    color: var(--sl-color-accent);
+    transform: scale(1.1);
+    color: white !important; /* Force literal white icon on hover */
+}
+
+.social-icons a:hover::before {
+    clip-path: circle(120% at 50% 50%);
+}
+
+/* Fix Sidebar Active Page Contrast (All Modes) */
+a[aria-current='page']:not(.sl-link-button) {
+    background-color: var(--sl-color-accent) !important;
+    color: white !important; /* Force literal white text */
+    font-weight: 600;
 }
 
 .hero {
@@ -45,22 +82,110 @@
     opacity: 0;
 }
 
-/* Button Animations */
+/* Button Animations - Viio Style */
 .sl-link-button {
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
         background-color 0.2s ease !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.sl-link-button:hover {
+/* Primary Button Reveal Effect (Accent -> White) */
+.sl-link-button.primary {
+    border-radius: 99px !important;
+    background: var(--sl-color-accent) !important;
+    border: 2px solid var(--sl-color-accent) !important;
+    transition: color 0.3s ease !important;
+}
+
+.sl-link-button.primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--sl-color-bg); /* Reveal page background (theme aware) on hover */
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sl-link-button.primary:hover {
+    color: var(--sl-color-accent) !important; /* Text becomes accent (bg) color */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sl-link-button.primary:hover::before {
+    clip-path: circle(120% at 50% 50%);
+}
+
+/* Secondary Button Reveal Effect (Outline -> Accent) */
+.sl-link-button.secondary {
+    border-radius: 99px !important;
+    border: 2px solid var(--sl-color-gray-5) !important; /* Ensure border exists */
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease !important;
+}
+
+.sl-link-button.secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--sl-color-accent-low); /* Reveal light blue on hover */
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sl-link-button.secondary:hover {
+    color: var(--sl-color-accent) !important;
+    border-color: var(--sl-color-accent) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sl-link-button.secondary:hover::before {
+    clip-path: circle(120% at 50% 50%);
 }
 
 .sl-link-button:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Pagination Links Animation */
+.pagination-links a {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    border: 1px solid var(--sl-color-gray-5);
+}
+
+.pagination-links a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--sl-color-accent-low); /* Subtle accent background */
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.pagination-links a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--sl-color-accent);
+}
+
+.pagination-links a:hover::before {
+    clip-path: circle(150% at 50% 50%);
 }
 
 /* Profile Image Styling */
@@ -84,4 +209,18 @@
 /* Hide site title on Home Page (pages with Hero) */
 body[data-has-hero] .site-title {
     display: none !important;
+}
+
+/* Default Theme (Light Mode) - Starlight Blue */
+:root {
+    --sl-color-accent: #2563eb; /* Starlight Blue for Light Mode */
+    --sl-color-accent-low: rgba(37, 99, 235, 0.1); /* Low opacity blue */
+    --sl-color-accent-high: #1d4ed8; /* Darker blue */
+}
+
+/* Theme Override for Dark Mode */
+:root[data-theme='dark'] {
+    --sl-color-accent: #8d73f5; /* Viio Purple for dark mode */
+    --sl-color-accent-low: rgba(141, 115, 245, 0.2); /* Low opacity purple */
+    --sl-color-accent-high: #a78bfa; /* Slightly lighter purple */
 }
