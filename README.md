@@ -1,47 +1,55 @@
-# Starlight Starter Kit: Basics
+# Professional Developer Portfolio
 
+[![CI - Code Quality & Build Check](https://github.com/nramanath/profile/actions/workflows/ci.yml/badge.svg)](https://github.com/nramanath/profile/actions/workflows/ci.yml)
+[![Deploy to GitHub Pages](https://github.com/nramanath/profile/actions/workflows/cd.yml/badge.svg)](https://github.com/nramanath/profile/actions/workflows/cd.yml)
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-```
-bun create astro@latest -- --template starlight
-```
+**Techniques & Tools:**
+![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=flat&logo=astro&logoColor=white)
+![Bun](https://img.shields.io/badge/Bun-%23000000.svg?style=flat&logo=bun&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=flat&logo=prettier&logoColor=black)
+![Mise](https://img.shields.io/badge/mise-task%20runner-blue)
+
+A professional developer portfolio website built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build), featuring a clean, responsive design, robust CI/CD pipelines, and modern tooling.
 
 ## Project Structure
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
+```bash
 .
-├── public/
+├── public/           # Static assets
 ├── src/
-│   ├── assets/
+│   ├── assets/       # Optimized images
 │   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+│   │   └── docs/     # Markdown/MDX content pages
+│   └── styles/       # Custom CSS tweaks
+├── astro.config.mjs  # Astro configuration
+├── mise.toml         # Task runner configuration
+└── package.json      # Dependencies
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## Getting Started
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+This project uses **[mise](https://mise.jdx.dev/)** for managing tools and tasks.
 
-Static assets, like favicons, can be placed in the `public/` directory.
+1.  **Install Dependencies**:
 
-## Commands
+    ```bash
+    mise install
+    ```
 
-All commands are run from the root of the project, from a terminal:
+2.  **Start Development Server**:
 
-| Command               | Action                                           |
-| :-------------------- | :----------------------------------------------- |
-| `bun install`         | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+    ```bash
+    mise run dev
+    ```
 
-## Want to learn more?
+3.  **Run Checks Locally (Pre-PR)**:
+    ```bash
+    mise pr
+    ```
+    This runs formatting checks, linting, and a production build to ensure your changes are ready.
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+## Deployment
+
+Deployment is automated via GitHub Actions. Pushes to the `main` branch trigger the [CD workflow](.github/workflows/cd.yml) which builds and deploys the site to GitHub Pages.
