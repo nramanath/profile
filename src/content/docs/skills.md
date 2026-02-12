@@ -3,41 +3,23 @@ title: Technical Skills
 description: Programming languages, frameworks, tools, and technologies
 ---
 
-## Programming Languages
+## Agentic AI
 
-- **Proficient**: [e.g., Python, JavaScript, Java]
-- **Experienced**: [e.g., TypeScript, Go, C++]
-- **Familiar**: [e.g., Rust, Kotlin]
+- **Technologies**: AWS Bedrock, Langchain / Langgraph, CrewAI, Claude Agentic SDK, FastMCP and RAG
 
-## Frameworks & Libraries
+## Programming Languages & Frameworks
 
-### Web Development
+- **Python3**: FastAPI, Flask, Pydantic, boto3, typer, rich
+- **Java**: Spring Boot
+- **Frontend**: Typescript, ReactJS, Angular 2
+- **Tools**: Github Actions, Jenkins, TaskRunners, mkdocs
 
-- [e.g., React, Next.js, Vue.js]
-- [e.g., Node.js, Express, FastAPI]
-- [e.g., Django, Flask]
+## AWS Services & Cloud
 
-### Mobile Development
-
-- [e.g., React Native, Flutter]
-
-### Data & ML
-
-- [e.g., TensorFlow, PyTorch, scikit-learn]
-- [e.g., Pandas, NumPy]
-
-## Tools & Technologies
-
-### Cloud & DevOps
-
-- **Cloud Platforms**: [e.g., AWS, Google Cloud, Azure]
-- **Containerization**: [e.g., Docker, Kubernetes]
-- **CI/CD**: [e.g., GitHub Actions, Jenkins, GitLab CI]
-
-### Databases
-
-- **SQL**: [e.g., PostgreSQL, MySQL]
-- **NoSQL**: [e.g., MongoDB, Redis, DynamoDB]
+- **Core**: Organizations and Account Management, Cloud formation, Service Catalog, VPC, Direct Connect, Route 53
+- **Compute & Integration**: EC2, ECS, EKS, Lambda, API Gateway, Load Balancers, SQS
+- **Storage & Databases**: S3, DynamoDB, RDS
+- **Management & Governance**: Cloudwatch, Cloudtrail, IAM
 
 ### Version Control & Collaboration
 
@@ -54,5 +36,3 @@ description: Programming languages, frameworks, tools, and technologies
 - Code Review & Mentoring
 
 ---
-
-_This list represents my current technical stack. I'm always learning and exploring new technologies!_
