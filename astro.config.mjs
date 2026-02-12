@@ -8,12 +8,27 @@ export default defineConfig({
     base: '/profile',
     integrations: [
         starlight({
-            title: 'Developer Career Profile',
+            title: 'Ramanathan Nachiappan',
+            description:
+                'Professional developer portfolio showcasing experience, skills, and projects',
+            customCss: ['./src/styles/ui-tweaks.css', './src/styles/resume.css'],
+            defaultLocale: 'root',
+            locales: {
+                root: {
+                    label: 'English',
+                    lang: 'en',
+                },
+            },
             social: [
                 {
                     icon: 'github',
-                    label: 'GitHub',
-                    href: 'https://github.com/nramanath',
+                    label: 'GitHub Repository',
+                    href: 'https://github.com/nramanath/profile',
+                },
+                {
+                    icon: 'linkedin',
+                    label: 'LinkedIn',
+                    href: 'https://www.linkedin.com/in/ramnachiappan/',
                 },
             ],
             sidebar: [
@@ -21,12 +36,16 @@ export default defineConfig({
                     label: 'Profile',
                     items: [
                         { label: 'About Me', slug: 'about-me' },
+                        { label: 'Skills', slug: 'skills' },
                         { label: 'Experience', slug: 'experience' },
                         { label: 'Projects', slug: 'projects' },
-                        { label: 'Tech Stack', slug: 'tech-stack' },
+                        { label: 'Resume', slug: 'resume' },
                     ],
                 },
             ],
+            components: {
+                Head: './src/components/Head.astro',
+            },
         }),
     ],
 });
