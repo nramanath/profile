@@ -1,0 +1,29 @@
+/* UI Tweaks for Profile Site */
+
+/* Increase social icon size in header */
+.social-icons a svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+
+.hero {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Profile Image Styling */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 2rem auto;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 4px solid var(--sl-color-accent);
+}
+
+/* Hide site title on Home Page (pages with Hero) */
+body[data-has-hero] .site-title {
+    display: none !important;
+}
