@@ -9,9 +9,10 @@ interface Props {
     location: string;
     period: string;
     icon?: string;
+    tags?: string[];
 }
 
-const { title, company, companyUrl, location, period, icon = 'pencil' } = Astro.props;
+const { title, company, companyUrl, location, period, icon = 'pencil', tags = [] } = Astro.props;
 ---
 
 <div class="experience-entry">
@@ -45,6 +46,15 @@ const { title, company, companyUrl, location, period, icon = 'pencil' } = Astro.
         </div>
         <div class="experience-content">
             <slot />
+            {
+                tags.length > 0 && (
+                    <div class="experience-tags">
+                        {tags.map((tag) => (
+                            <span class="tag">{tag}</span>
+                        ))}
+                    </div>
+                )
+            }
         </div>
     </div>
 </div>
@@ -191,6 +201,33 @@ const { title, company, companyUrl, location, period, icon = 'pencil' } = Astro.
     .experience-content {
         font-size: 1rem;
         color: var(--sl-color-gray-3);
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .experience-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 0.5rem;
+    }
+
+    .tag {
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 0.3rem 0.85rem;
+        background: var(--sl-color-accent-low);
+        color: var(--sl-color-accent-high);
+        border-radius: 2rem;
+        border: 1px solid var(--sl-color-accent);
+        font-family: var(--sl-font-mono);
+        transition: all 0.2s ease;
+    }
+
+    .experience-entry:hover .tag {
+        background: var(--sl-color-accent);
+        color: white;
     }
 
     .experience-content :global(ul) {
@@ -237,6 +274,9 @@ const { title, company, companyUrl, location, period, icon = 'pencil' } = Astro.
             align-items: center;
         }
         .experience-meta {
+            justify-content: center;
+        }
+        .experience-tags {
             justify-content: center;
         }
         .experience-content :global(li) {
