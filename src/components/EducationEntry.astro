@@ -1,0 +1,167 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+
+interface Props {
+    title: string;
+    school: string;
+    period: string;
+    cgpa?: string;
+    icon?: string;
+}
+
+const { title, school, period, cgpa, icon = 'open-book' } = Astro.props;
+---
+
+<div class="education-entry">
+    <div class="header-row">
+        <div class="icon-container">
+            <Icon name={icon} />
+        </div>
+        <div class="title-group">
+            <h3>{title}</h3>
+            <p class="school">{school}</p>
+        </div>
+    </div>
+
+    <div class="meta-row">
+        <p class="period">
+            <Icon name="calendar" size="1rem" />
+            {period}
+        </p>
+        {
+            cgpa && (
+                <p class="cgpa">
+                    <strong>CGPA: {cgpa}</strong>
+                </p>
+            )
+        }
+    </div>
+
+    <div class="highlights-row">
+        <slot />
+    </div>
+</div>
+
+<style>
+    .education-entry {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 2.25rem;
+        background: var(--sl-color-gray-6);
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 1rem;
+        transition:
+            transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+            box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+            border-color 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+
+    .education-entry:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border-color: var(--sl-color-accent);
+    }
+
+    .education-entry::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--sl-color-accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .education-entry:hover::after {
+        transform: scaleX(1);
+    }
+
+    .header-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .icon-container {
+        width: 3.5rem;
+        height: 3.5rem;
+        background: var(--sl-color-accent-low);
+        color: var(--sl-color-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem;
+        font-size: 1.75rem;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+        flex-shrink: 0;
+    }
+
+    .title-group h3 {
+        margin: 0 !important;
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        color: var(--sl-color-white) !important;
+        line-height: 1.2 !important;
+    }
+
+    .school {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--sl-color-accent);
+        margin: 0 !important;
+    }
+
+    .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: center;
+        color: var(--sl-color-gray-3);
+    }
+
+    .period {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.95rem;
+        margin: 0 !important;
+    }
+
+    .cgpa {
+        font-size: 1rem;
+        margin: 0 !important;
+    }
+
+    .highlights-row {
+        margin-top: 0.5rem;
+    }
+
+    /* Target Starlight Asides inside the slots */
+    .highlights-row :global(.starlight-aside) {
+        margin: 0 !important;
+        width: 100%;
+        text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+        .education-entry {
+            padding: 1.75rem;
+        }
+        .header-row {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+        .meta-row {
+            justify-content: center;
+            gap: 1rem;
+        }
+    }
+</style>

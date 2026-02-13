@@ -44,11 +44,16 @@
     clip-path: circle(120% at 50% 50%);
 }
 
-/* Fix Sidebar Active Page Contrast (All Modes) */
+/* Fix Sidebar Active Page Contrast & Animation */
 a[aria-current='page']:not(.sl-link-button) {
     background-color: var(--sl-color-accent) !important;
-    color: white !important; /* Force literal white text */
+    color: white !important;
     font-weight: 600;
+    border-radius: 0.5rem;
+    view-transition-name: active-sidebar-item;
+    padding-inline: 1rem !important;
+    margin-inline: 0.5rem !important;
+    display: block;
 }
 
 .hero {
@@ -223,4 +228,55 @@ body[data-has-hero] .site-title {
     --sl-color-accent: #8d73f5; /* Viio Purple for dark mode */
     --sl-color-accent-low: rgba(141, 115, 245, 0.2); /* Low opacity purple */
     --sl-color-accent-high: #a78bfa; /* Slightly lighter purple */
+}
+
+/* Collapsible Admonitions (Aside Style) */
+details.sl-aside-collapsible {
+    border: 1px solid var(--sl-color-gray-5);
+    background-color: var(--sl-color-gray-6);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    transition: border-color 0.2s ease;
+}
+
+details.sl-aside-collapsible:hover {
+    border-color: var(--sl-color-accent);
+}
+
+details.sl-aside-collapsible summary {
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--sl-color-white);
+}
+
+details.sl-aside-collapsible summary::-webkit-details-marker {
+    display: none;
+}
+
+details.sl-aside-collapsible summary::before {
+    content: '→';
+    transition: transform 0.2s ease;
+    color: var(--sl-color-accent);
+    font-size: 1.2rem;
+}
+
+details.sl-aside-collapsible[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details.sl-aside-collapsible[open] summary {
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    padding-bottom: 0.5rem;
+}
+
+/* Variant: Tip (Blue/Accent) */
+details.sl-aside-collapsible.tip {
+    border-left: 4px solid var(--sl-color-accent);
+    background-color: var(--sl-color-accent-low);
 }

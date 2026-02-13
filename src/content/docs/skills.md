@@ -5,14 +5,16 @@ description: Programming languages, frameworks, tools, and technologies
 
 ## Agentic AI
 
-- **Technologies**: AWS Bedrock, Langchain / Langgraph, CrewAI, Claude Agentic SDK, FastMCP and RAG
+- **Technologies**: Langchain / Langgraph, CrewAI, Claude Agentic SDK, FastMCP and RAG
+- **Agentic Dev Tools**: Claude Code, Cursor, Antigravity
 
 ## Programming Languages & Frameworks
 
-- **Python3**: FastAPI, Flask, Pydantic, boto3, typer, rich
+- **Python**: FastAPI, Django, Flask, Pydantic, boto3, typer, rich
 - **Java**: Spring Boot
-- **Frontend**: Typescript, ReactJS, Angular 2
-- **Tools**: Github Actions, Jenkins, TaskRunners, mkdocs
+- **Frontend**: Typescript, Basics of HTML, CSS, ReactJS
+- **CI/CD**: Github Actions, Jenkins
+- **Task Runners**: make, just, mise, task
 
 ## AWS Services & Cloud
 
