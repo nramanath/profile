@@ -3,8 +3,9 @@ title: About Me
 description: Educational background and personal introduction
 ---
 
-import { Card, CardGrid, Aside } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
 import EducationEntry from '../../components/EducationEntry.astro';
+import InfoCard from '../../components/InfoCard.astro';
 
 <img
     src="/profile/ramanathan-profile-image.jpg"
@@ -52,7 +53,9 @@ I am passionate about building specialized agents using AWS Bedrock, Langchain /
 
 ## Certifications
 
-- **AWS Certified Solutions Architect**
-- **AWS Certified SysOps Administrator**
-- **AWS Certified Cloud Practitioner**
-- **Web Services and REST API with Spring Boot (Udemy)**
+<div class="certifications-grid">
+    <InfoCard title="AWS Certified Solutions Architect" subtitle="Associate" icon="seti:image" />
+    <InfoCard title="AWS Certified SysOps Administrator" subtitle="Associate" icon="seti:image" />
+    <InfoCard title="AWS Certified Cloud Practitioner" icon="seti:image" />
+    <InfoCard title="Rest API with Spring Boot" subtitle="Udemy Certificate" icon="assignment" />
+</div>
