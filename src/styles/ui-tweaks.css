@@ -4,14 +4,56 @@
 .social-icons a svg {
     width: 1.5rem !important;
     height: 1.5rem !important;
+    /* color: var(--sl-color-text-invert);  Removed to use default previous color */
     transition:
         transform 0.2s ease,
         color 0.2s ease;
+    z-index: 2;
+    position: relative;
+    display: block;
+}
+
+.social-icons a {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+/* Social Icon Reveal Effect */
+.social-icons a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--sl-color-accent); /* Blue background reveal */
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .social-icons a:hover svg {
-    transform: scale(1.2);
-    color: var(--sl-color-accent);
+    transform: scale(1.1);
+    color: white !important; /* Force literal white icon on hover */
+}
+
+.social-icons a:hover::before {
+    clip-path: circle(120% at 50% 50%);
+}
+
+/* Fix Sidebar Active Page Contrast & Animation */
+a[aria-current='page']:not(.sl-link-button) {
+    background-color: var(--sl-color-accent) !important;
+    color: white !important;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    view-transition-name: active-sidebar-item;
+    padding-inline: 1rem !important;
+    margin-inline: 0.5rem !important;
+    display: block;
 }
 
 .hero {
@@ -45,22 +87,110 @@
     opacity: 0;
 }
 
-/* Button Animations */
+/* Button Animations - Viio Style */
 .sl-link-button {
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
         background-color 0.2s ease !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.sl-link-button:hover {
+/* Primary Button Reveal Effect (Accent -> White) */
+.sl-link-button.primary {
+    border-radius: 99px !important;
+    background: var(--sl-color-accent) !important;
+    border: 2px solid var(--sl-color-accent) !important;
+    transition: color 0.3s ease !important;
+}
+
+.sl-link-button.primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--sl-color-bg); /* Reveal page background (theme aware) on hover */
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sl-link-button.primary:hover {
+    color: var(--sl-color-accent) !important; /* Text becomes accent (bg) color */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sl-link-button.primary:hover::before {
+    clip-path: circle(120% at 50% 50%);
+}
+
+/* Secondary Button Reveal Effect (Outline -> Accent) */
+.sl-link-button.secondary {
+    border-radius: 99px !important;
+    border: 2px solid var(--sl-color-gray-5) !important; /* Ensure border exists */
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease !important;
+}
+
+.sl-link-button.secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--sl-color-accent-low); /* Reveal light blue on hover */
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sl-link-button.secondary:hover {
+    color: var(--sl-color-accent) !important;
+    border-color: var(--sl-color-accent) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sl-link-button.secondary:hover::before {
+    clip-path: circle(120% at 50% 50%);
 }
 
 .sl-link-button:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Pagination Links Animation */
+.pagination-links a {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    border: 1px solid var(--sl-color-gray-5);
+}
+
+.pagination-links a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--sl-color-accent-low); /* Subtle accent background */
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.pagination-links a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--sl-color-accent);
+}
+
+.pagination-links a:hover::before {
+    clip-path: circle(150% at 50% 50%);
 }
 
 /* Profile Image Styling */
@@ -84,4 +214,195 @@
 /* Hide site title on Home Page (pages with Hero) */
 body[data-has-hero] .site-title {
     display: none !important;
+}
+
+/* Default Theme (Light Mode) - Starlight Blue */
+:root {
+    --sl-color-accent: #2563eb; /* Starlight Blue for Light Mode */
+    --sl-color-accent-low: rgba(37, 99, 235, 0.1); /* Low opacity blue */
+    --sl-color-accent-high: #1d4ed8; /* Darker blue */
+}
+
+/* Theme Override for Dark Mode */
+:root[data-theme='dark'] {
+    --sl-color-accent: #8d73f5; /* Viio Purple for dark mode */
+    --sl-color-accent-low: rgba(141, 115, 245, 0.2); /* Low opacity purple */
+    --sl-color-accent-high: #a78bfa; /* Slightly lighter purple */
+
+    /* Global Typography Overrides for Content Density */
+    --sl-text-5xl: 3rem; /* Reduced from 3.5rem */
+    --sl-text-4xl: 2.5rem; /* Reduced from 3rem */
+    --sl-text-3xl: 2rem; /* Reduced from 2.5rem */
+    --sl-text-2xl: 1.5rem; /* Reduced from 2rem */
+    --sl-text-xl: 1.25rem; /* Reduced from 1.5rem */
+    --sl-text-lg: 1.1rem; /* Reduced from 1.25rem */
+    --sl-text-base: 0.9375rem; /* Reduced from 1rem (16px -> 15px) */
+    --sl-text-sm: 0.875rem;
+    --sl-text-xs: 0.8125rem;
+}
+
+/* Collapsible Admonitions (Aside Style) */
+details.sl-aside-collapsible {
+    border: 1px solid var(--sl-color-gray-5);
+    background-color: var(--sl-color-gray-6);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    transition: border-color 0.2s ease;
+}
+
+details.sl-aside-collapsible:hover {
+    border-color: var(--sl-color-accent);
+}
+
+details.sl-aside-collapsible summary {
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--sl-color-white);
+}
+
+details.sl-aside-collapsible summary::-webkit-details-marker {
+    display: none;
+}
+
+details.sl-aside-collapsible summary::before {
+    content: '→';
+    transition: transform 0.2s ease;
+    color: var(--sl-color-accent);
+    font-size: 1.2rem;
+}
+
+details.sl-aside-collapsible[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details.sl-aside-collapsible[open] summary {
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    padding-bottom: 0.5rem;
+}
+
+/* Variant: Tip (Blue/Accent) */
+details.sl-aside-collapsible.tip {
+    border-left: 4px solid var(--sl-color-accent);
+    background-color: var(--sl-color-accent-low);
+}
+
+/* Certifications Flex Container */
+.certifications-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 640px) {
+    .certifications-badges {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Resume Page Styling */
+.resume-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.resume-header-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pdf-viewer-card {
+    background: var(--sl-color-gray-6);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.viewer-header {
+    background: var(--sl-color-gray-5);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    border-bottom: 1px solid var(--sl-color-gray-4);
+}
+
+@media (max-width: 640px) {
+    .resume-header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .resume-header-actions :global(a) {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/* Dark Mode Text Readability Improvements */
+:root[data-theme='dark'] {
+    /* Override gray text colors to white for better readability in dark mode */
+    --sl-color-gray-1: #ffffff;
+    --sl-color-gray-2: #ffffff;
+    --sl-color-gray-3: #e0e0e0;
+}
+
+/* Specific dark mode overrides for content elements */
+:root[data-theme='dark'] .location,
+:root[data-theme='dark'] .period,
+:root[data-theme='dark'] .experience-content,
+:root[data-theme='dark'] .education-content,
+:root[data-theme='dark'] .project-content {
+    color: #ffffff !important;
+}
+
+/* Ensure list items in dark mode are white */
+:root[data-theme='dark'] .experience-content li,
+:root[data-theme='dark'] .education-content li,
+:root[data-theme='dark'] .project-content li,
+:root[data-theme='dark'] .skill-content li {
+    color: #ffffff !important;
+}
+
+/* Light Mode Text Readability Improvements */
+:root[data-theme='light'] {
+    /* Override gray text colors to black for better readability in light mode */
+    --sl-color-gray-1: #1a1a1a;
+    --sl-color-gray-2: #2a2a2a;
+    --sl-color-gray-3: #3a3a3a;
+}
+
+/* Specific light mode overrides for content elements */
+:root[data-theme='light'] .location,
+:root[data-theme='light'] .period,
+:root[data-theme='light'] .experience-content,
+:root[data-theme='light'] .education-content,
+:root[data-theme='light'] .project-content,
+:root[data-theme='light'] .skill-content {
+    color: #1a1a1a !important;
+}
+
+/* Ensure list items in light mode are black */
+:root[data-theme='light'] .experience-content li,
+:root[data-theme='light'] .education-content li,
+:root[data-theme='light'] .project-content li,
+:root[data-theme='light'] .skill-content li {
+    color: #1a1a1a !important;
 }

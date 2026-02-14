@@ -1,0 +1,56 @@
+---
+interface Props {
+    title: string;
+    subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<div class="cert-badge">
+    <span class="title">{title}</span>
+    {subtitle && <span class="subtitle">{subtitle}</span>}
+</div>
+
+<style>
+    .cert-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: var(--sl-color-accent-low);
+        color: var(--sl-color-accent-high);
+        border-radius: 2rem;
+        border: 1px solid var(--sl-color-accent);
+        font-family: var(--sl-font-mono);
+        transition: all 0.2s ease;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+
+    .cert-badge:hover {
+        background: var(--sl-color-accent);
+        color: white;
+    }
+
+    .title {
+        font-weight: 600;
+    }
+
+    .subtitle {
+        opacity: 0.8;
+        font-weight: 400;
+    }
+
+    .subtitle::before {
+        content: '·';
+        margin-right: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+        .cert-badge {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.85rem;
+        }
+    }
+</style>

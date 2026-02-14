@@ -1,0 +1,62 @@
+---
+title: About Me
+description: Educational background and personal introduction
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import EducationEntry from '../../components/EducationEntry.astro';
+import CertificationBadge from '../../components/CertificationBadge.astro';
+
+<img
+    src="/profile/ramanathan-profile-image.jpg"
+    alt="Ramanathan Nachiappan"
+    class="profile-image"
+/>
+
+## Introduction
+
+Lead Software Engineer with 10+ years of experience specializing in Platform Engineering, Cloud Platform and Governance, and Agentic AI. Proven track record of architecting enterprise-scale solutions at GoDaddy and Amazon, including modernizing legacy infrastructure and pioneering autonomous multi-agent AI systems.
+
+I am passionate about building specialized agents using AWS Bedrock, Langchain / Langgraph, CrewAI, Claude Agentic SDK, FastMCP and RAG.
+
+## Education
+
+<EducationEntry
+    title="MS in Computer Science"
+    school="Arizona State University, USA"
+    period="09/01/2017 – 12/17/2019"
+    cgpa="3.77/4.0"
+    icon="open-book"
+    tags={[
+        'Cloud Computing',
+        'Machine Learning',
+        'Software Security',
+        'Adaptive Web',
+        'Algorithms',
+        'Artificial Intelligence',
+        'Mobile Computing',
+        'Software Project / Quality management',
+        'Distributed Database Systems',
+    ]}
+/>
+
+<EducationEntry
+    title="BE in Computer Science"
+    school="Anna University, India"
+    period="08/02/2010 – 04/19/2014"
+    cgpa="8.64/10.0"
+    icon="open-book"
+    achievements={[
+        'University 37th rank out of 8069 students',
+        'Merit Scholarship Award for outstanding performance',
+    ]}
+/>
+
+## Certifications
+
+<div class="certifications-badges">
+    <CertificationBadge title="AWS Certified Solutions Architect" subtitle="Associate" />
+    <CertificationBadge title="AWS Certified SysOps Administrator" subtitle="Associate" />
+    <CertificationBadge title="AWS Certified Cloud Practitioner" subtitle="Associate" />
+    <CertificationBadge title="Rest API with Spring Boot" subtitle="Udemy Certificate" />
+</div>

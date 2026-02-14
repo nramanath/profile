@@ -1,15 +1,14 @@
 # Professional Developer Portfolio
 
-[![CI - Code Quality & Build Check](https://github.com/nramanath/profile/actions/workflows/ci.yml/badge.svg)](https://github.com/nramanath/profile/actions/workflows/ci.yml)
-[![Deploy to GitHub Pages](https://github.com/nramanath/profile/actions/workflows/cd.yml/badge.svg)](https://github.com/nramanath/profile/actions/workflows/cd.yml)
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+[![CI](https://github.com/nramanath/profile/actions/workflows/ci.yml/badge.svg)](https://github.com/nramanath/profile/actions/workflows/ci.yml)
+[![CD](https://github.com/nramanath/profile/actions/workflows/cd.yml/badge.svg)](https://github.com/nramanath/profile/actions/workflows/cd.yml)
 
-**Techniques & Tools:**
-![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=flat&logo=astro&logoColor=white)
-![Bun](https://img.shields.io/badge/Bun-%23000000.svg?style=flat&logo=bun&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white)
-![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=flat&logo=prettier&logoColor=black)
-![Mise](https://img.shields.io/badge/mise-task%20runner-blue)
+[![Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+[![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=flat&logo=astro&logoColor=white)](https://astro.build)
+[![Bun](https://img.shields.io/badge/Bun-%23000000.svg?style=flat&logo=bun&logoColor=white)](https://bun.sh)
+[![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=flat&logo=prettier&logoColor=black)](https://prettier.io/)
+[![Mise](https://img.shields.io/badge/mise-task%20runner-blue)](https://mise.jdx.dev/)
 
 A professional developer portfolio website built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build), featuring a clean, responsive design, robust CI/CD pipelines, and modern tooling.
 

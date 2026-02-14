@@ -1,0 +1,176 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+import type { StarlightIcon } from '@astrojs/starlight/components/Icons';
+
+interface Props {
+    title: string;
+    icon?: string;
+}
+
+const { title, icon } = Astro.props;
+---
+
+<div class="skill-card">
+    <div class="skill-icon-container">
+        {
+            icon && (
+                <div class="skill-icon">
+                    {icon === 'cloud' ? (
+                        <svg
+                            width="2rem"
+                            height="2rem"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                        </svg>
+                    ) : (
+                        <Icon name={icon as StarlightIcon} size="2rem" />
+                    )}
+                </div>
+            )
+        }
+    </div>
+    <div class="skill-info">
+        <h3>{title}</h3>
+        <div class="skill-content">
+            <slot />
+        </div>
+    </div>
+</div>
+
+<style>
+    .skill-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
+        padding: 1.5rem 1.75rem;
+        background: var(--sl-color-gray-6);
+        border: 1px solid var(--sl-color-gray-5);
+        border-radius: 1rem;
+        transition:
+            transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+            box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+            border-color 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        align-items: start;
+    }
+
+    .skill-card:hover {
+        transform: translateX(10px);
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
+        border-color: var(--sl-color-accent);
+    }
+
+    .skill-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--sl-color-accent);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.4s ease;
+    }
+
+    .skill-card:hover::after {
+        transform: scaleY(1);
+    }
+
+    .skill-icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 0.25rem;
+    }
+
+    .skill-icon {
+        color: var(--sl-color-accent);
+        background: var(--sl-color-accent-low);
+        width: 4rem;
+        height: 4rem;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .skill-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .skill-info h3 {
+        margin: 0 !important;
+        font-size: 1.3rem !important;
+        font-weight: 700 !important;
+        color: var(--sl-color-white) !important;
+    }
+
+    .skill-content {
+        font-size: 0.95rem;
+        color: var(--sl-color-gray-3);
+    }
+
+    .skill-content :global(ul) {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .skill-content :global(li) {
+        position: relative;
+        padding-left: 1.5rem;
+        line-height: 1.5;
+        text-align: justify;
+    }
+
+    .skill-content :global(li::before) {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: var(--sl-color-accent);
+        font-weight: bold;
+    }
+
+    .skill-content :global(strong) {
+        color: var(--sl-color-gray-1);
+        font-weight: 700;
+        font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .skill-card {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        .skill-icon-container {
+            justify-content: center;
+        }
+        .skill-info {
+            align-items: center;
+        }
+        .skill-content :global(li) {
+            text-align: center;
+            padding-left: 0;
+        }
+        .skill-content :global(li::before) {
+            display: none;
+        }
+    }
+</style>
