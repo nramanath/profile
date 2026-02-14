@@ -228,6 +228,17 @@ body[data-has-hero] .site-title {
     --sl-color-accent: #8d73f5; /* Viio Purple for dark mode */
     --sl-color-accent-low: rgba(141, 115, 245, 0.2); /* Low opacity purple */
     --sl-color-accent-high: #a78bfa; /* Slightly lighter purple */
+
+    /* Global Typography Overrides for Content Density */
+    --sl-text-5xl: 3rem; /* Reduced from 3.5rem */
+    --sl-text-4xl: 2.5rem; /* Reduced from 3rem */
+    --sl-text-3xl: 2rem; /* Reduced from 2.5rem */
+    --sl-text-2xl: 1.5rem; /* Reduced from 2rem */
+    --sl-text-xl: 1.25rem; /* Reduced from 1.5rem */
+    --sl-text-lg: 1.1rem; /* Reduced from 1.25rem */
+    --sl-text-base: 0.9375rem; /* Reduced from 1rem (16px -> 15px) */
+    --sl-text-sm: 0.875rem;
+    --sl-text-xs: 0.8125rem;
 }
 
 /* Collapsible Admonitions (Aside Style) */
@@ -281,12 +292,18 @@ details.sl-aside-collapsible.tip {
     background-color: var(--sl-color-accent-low);
 }
 
-/* Certifications Grid */
-.certifications-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+/* Certifications Flex Container */
+.certifications-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     margin-top: 1.5rem;
+}
+
+@media (max-width: 640px) {
+    .certifications-badges {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {

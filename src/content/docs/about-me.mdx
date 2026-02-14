@@ -5,7 +5,7 @@ description: Educational background and personal introduction
 
 import { Aside } from '@astrojs/starlight/components';
 import EducationEntry from '../../components/EducationEntry.astro';
-import InfoCard from '../../components/InfoCard.astro';
+import CertificationBadge from '../../components/CertificationBadge.astro';
 
 <img
     src="/profile/ramanathan-profile-image.jpg"
@@ -27,35 +27,36 @@ I am passionate about building specialized agents using AWS Bedrock, Langchain /
     period="09/01/2017 – 12/17/2019"
     cgpa="3.77/4.0"
     icon="open-book"
->
-    <Aside type="note" title="Coursework">
-        Cloud Computing, Machine Learning, Software Security, Adaptive Web, Algorithms, Artificial
-        Intelligence, Mobile Computing, Software Project / Quality management, Distributed Database
-        Systems
-    </Aside>
-</EducationEntry>
+    tags={[
+        'Cloud Computing',
+        'Machine Learning',
+        'Software Security',
+        'Adaptive Web',
+        'Algorithms',
+        'Artificial Intelligence',
+        'Mobile Computing',
+        'Software Project / Quality management',
+        'Distributed Database Systems',
+    ]}
+/>
 
 <EducationEntry
-  title="BE in Computer Science"
-  school="Anna University, India"
-  period="08/02/2010 – 04/19/2014"
-  cgpa="8.64/10.0"
-  icon="open-book"
->
-  <Aside type="tip" title="Achievement">
-    University 37th rank out of 8069 students
-  </Aside>
-
-  <Aside type="tip" title="Achievement">
-    Recipient of the Merit Scholarship Award for outstanding performance
-  </Aside>
-</EducationEntry>
+    title="BE in Computer Science"
+    school="Anna University, India"
+    period="08/02/2010 – 04/19/2014"
+    cgpa="8.64/10.0"
+    icon="open-book"
+    achievements={[
+        'University 37th rank out of 8069 students',
+        'Merit Scholarship Award for outstanding performance',
+    ]}
+/>
 
 ## Certifications
 
-<div class="certifications-grid">
-    <InfoCard title="AWS Certified Solutions Architect" subtitle="Associate" icon="seti:image" />
-    <InfoCard title="AWS Certified SysOps Administrator" subtitle="Associate" icon="seti:image" />
-    <InfoCard title="AWS Certified Cloud Practitioner" icon="seti:image" />
-    <InfoCard title="Rest API with Spring Boot" subtitle="Udemy Certificate" icon="assignment" />
+<div class="certifications-badges">
+    <CertificationBadge title="AWS Certified Solutions Architect" subtitle="Associate" />
+    <CertificationBadge title="AWS Certified SysOps Administrator" subtitle="Associate" />
+    <CertificationBadge title="AWS Certified Cloud Practitioner" subtitle="Associate" />
+    <CertificationBadge title="Rest API with Spring Boot" subtitle="Udemy Certificate" />
 </div>
