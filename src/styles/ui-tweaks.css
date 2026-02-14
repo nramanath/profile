@@ -356,3 +356,53 @@ details.sl-aside-collapsible.tip {
         justify-content: center;
     }
 }
+/* Dark Mode Text Readability Improvements */
+:root[data-theme='dark'] {
+    /* Override gray text colors to white for better readability in dark mode */
+    --sl-color-gray-1: #ffffff;
+    --sl-color-gray-2: #ffffff;
+    --sl-color-gray-3: #e0e0e0;
+}
+
+/* Specific dark mode overrides for content elements */
+:root[data-theme='dark'] .location,
+:root[data-theme='dark'] .period,
+:root[data-theme='dark'] .experience-content,
+:root[data-theme='dark'] .education-content,
+:root[data-theme='dark'] .project-content {
+    color: #ffffff !important;
+}
+
+/* Ensure list items in dark mode are white */
+:root[data-theme='dark'] .experience-content li,
+:root[data-theme='dark'] .education-content li,
+:root[data-theme='dark'] .project-content li,
+:root[data-theme='dark'] .skill-content li {
+    color: #ffffff !important;
+}
+
+/* Light Mode Text Readability Improvements */
+:root[data-theme='light'] {
+    /* Override gray text colors to black for better readability in light mode */
+    --sl-color-gray-1: #1a1a1a;
+    --sl-color-gray-2: #2a2a2a;
+    --sl-color-gray-3: #3a3a3a;
+}
+
+/* Specific light mode overrides for content elements */
+:root[data-theme='light'] .location,
+:root[data-theme='light'] .period,
+:root[data-theme='light'] .experience-content,
+:root[data-theme='light'] .education-content,
+:root[data-theme='light'] .project-content,
+:root[data-theme='light'] .skill-content {
+    color: #1a1a1a !important;
+}
+
+/* Ensure list items in light mode are black */
+:root[data-theme='light'] .experience-content li,
+:root[data-theme='light'] .education-content li,
+:root[data-theme='light'] .project-content li,
+:root[data-theme='light'] .skill-content li {
+    color: #1a1a1a !important;
+}
