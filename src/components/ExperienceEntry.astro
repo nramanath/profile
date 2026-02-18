@@ -10,9 +10,19 @@ interface Props {
     period: string;
     icon?: string;
     tags?: string[];
+    achievements?: string[];
 }
 
-const { title, company, companyUrl, location, period, icon = 'pencil', tags = [] } = Astro.props;
+const {
+    title,
+    company,
+    companyUrl,
+    location,
+    period,
+    icon = 'pencil',
+    tags = [],
+    achievements = [],
+} = Astro.props;
 ---
 
 <div class="experience-entry">
@@ -46,6 +56,15 @@ const { title, company, companyUrl, location, period, icon = 'pencil', tags = []
         </div>
         <div class="experience-content">
             <slot />
+            {
+                achievements.length > 0 && (
+                    <div class="experience-tags achievements">
+                        {achievements.map((achievement) => (
+                            <span class="tag achievement-tag">{achievement}</span>
+                        ))}
+                    </div>
+                )
+            }
             {
                 tags.length > 0 && (
                     <div class="experience-tags">
@@ -213,6 +232,11 @@ const { title, company, companyUrl, location, period, icon = 'pencil', tags = []
         margin-top: 0.5rem;
     }
 
+    .experience-tags.achievements {
+        margin-top: 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+
     .tag {
         font-size: 0.85rem;
         font-weight: 600;
@@ -225,9 +249,21 @@ const { title, company, companyUrl, location, period, icon = 'pencil', tags = []
         transition: all 0.2s ease;
     }
 
+    .achievement-tag {
+        background: rgba(218, 165, 32, 0.15);
+        border-color: rgba(218, 165, 32, 0.5);
+        color: var(--sl-color-white);
+    }
+
     .experience-entry:hover .tag {
         background: var(--sl-color-accent);
         color: white;
+    }
+
+    .experience-entry:hover .tag.achievement-tag {
+        background: #ffd700;
+        border-color: #ffd700;
+        color: #000 !important;
     }
 
     .experience-content :global(ul) {
