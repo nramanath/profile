@@ -24,4 +24,4 @@ pnpm-debug.log*
 # ide settings
 .idea
 .vscode
-
+.agent
