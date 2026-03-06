@@ -52,3 +52,12 @@ This project uses **[mise](https://mise.jdx.dev/)** for managing tools and tasks
 ## Deployment
 
 Deployment is automated via GitHub Actions. Pushes to the `main` branch trigger the [CD workflow](.github/workflows/cd.yml) which builds and deploys the site to GitHub Pages.
+
+## AI-Driven Workflows
+
+This repository is optimized for speed and automation using agentic AI capabilities:
+
+- **Antigravity Skills**: Custom workflows located in `.agent/workflows/` allow for voice/text-prompted portfolio updates.
+    - **Update Portfolio**: By simply updating the resume PDF and asking Antigravity to `update portfolio`, the agent intelligently parses the PDF and synchronizes all markdown content (`experience.mdx`, `skills.mdx`), eliminating manual data entry.
+    - **Automated PR Creation**: A dedicated `create-pr` skill automates the chore of running CI checks, branching, formatting, and generating compliant pull requests.
+- **Gemini Code CLI bot**: Pull requests are automatically reviewed by the Gemini Code CLI bot, ensuring a high standard of code quality and demonstrating an AI-forward approach to development.
